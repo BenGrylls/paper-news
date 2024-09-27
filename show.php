@@ -334,6 +334,35 @@ $conn->close();
             font-size: 10px;
             color:blue;
         }
+        .button-container {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            font-family: "Sarabun", sans-serif;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* สไตล์สำหรับปุ่มปริ้น */
+        .print-button {
+            background-color: #008CBA;
+        }
+
+        .edit-button {
+            background-color: #f44336;
+        }
 
 
 
@@ -342,8 +371,8 @@ $conn->close();
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100%;
+            align-items: top;
+            height: 330mm;
             background-color: #ba68c8;
         }
 
@@ -379,7 +408,10 @@ $conn->close();
                 page-break-after: always;
                 
             }
-            
+                /* ซ่อนปุ่มเมื่อปริ้น */
+           .button-container {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -503,6 +535,17 @@ $conn->close();
         <div class="nam_wri">
             <?php echo $row['nam_wri']; ?>
         </div>
+        
+    </div>
+    <div class="button-container">
+        <!-- ปุ่มย้อนกลับ -->
+        <button class="button" onclick="window.location.href='index.php';">ย้อนกลับ</button>
+
+        <!-- ปุ่มปริ้น -->
+        <button class="button print-button" onclick="window.print();">ปริ้น</button>
+
+        <!-- ปุ่มแก้ไข -->
+        <button class="button edit-button" onclick="window.location.href='write.php?id=<?php echo $row['id']; ?>';">แก้ไข</button>
     </div>
 </body>
 </html>
